@@ -29,7 +29,7 @@ $ pig -x local -f pregunta.pig
          >>> Escriba su respuesta a partir de este punto <<<
 */
 --cargar datos
-datos = LOAD 'data.csv' USING PigStorage(',') AS (driverId:int, truckId:int, eventTime:STRING, eventType:STRING, longitude:double, latitude:double, eventKey:STRING, correlationId:STRING, driverName:STRING, routeId:BIGINT, routeName:STRING, eventDate:STRING);
+datos = LOAD 'data.csv' USING PigStorage(',') AS (driverId:int, truckId:int, eventTime:chararray, eventType:chararray, longitude:double, latitude:double, eventKey:chararray, correlationId:chararray, driverName:chararray, routeId:long, routeName:chararray, eventDate:chararray);
 
 obtener = LIMIT datos 10;
 
