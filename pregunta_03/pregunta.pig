@@ -15,6 +15,7 @@ $ pig -x local -f pregunta.pig
 --cargar datos
 datos = LOAD 'data.tsv' USING PigStorage('\t') AS (letra: chararray, fecha: chararray, cantidad: int);
 
+datos = FOREACH datos GENERATE cantidad;
 ordenar  = ORDER datos BY cantidad asc;
 
 s = LIMIT ordenar 5;
