@@ -21,4 +21,4 @@ grupos = GROUP datos BY letra;
 conteos = FOREACH grupos GENERATE group AS letra, COUNT(datos) AS cantidad;
 
 -- Escribir los resultados en el archivo de salida
-STORE conteos INTO INTO 'output' USING PigStorage(',');
+STORE conteos INTO  'output' USING PigStorage(',');
