@@ -33,6 +33,8 @@ datos = LOAD 'data.csv' USING PigStorage(',') AS (driverId:int, truckId:int, eve
 
 obtener = LIMIT datos 10;
 
+obtener = FOREACH obtener GENERATE $0, $1, $2;
+
 ordenar  = ORDER obtener BY driverId asc, truckId asc, eventTime asc;
 
 -- Escribir los resultados en el archivo de salida
