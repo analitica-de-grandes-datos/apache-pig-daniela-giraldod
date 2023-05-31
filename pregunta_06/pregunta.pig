@@ -23,7 +23,8 @@ v = FOREACH datos GENERATE FLATTEN(letter_bag) as flatten_letter;
 
 grupos = GROUP v BY flatten_letter;
 
-conteos = FOREACH grupos GENERATE group AS lista, COUNT(datos) AS cantidad;
+conteos = FOREACH grupos GENERATE group COUNT(v);
 
-STORE z INTO 'output' USING PigStorage(',');
+STORE conteos INTO 'output' USING PigStorage(',');
+
 
