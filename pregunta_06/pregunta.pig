@@ -19,7 +19,7 @@ datos = LOAD './data.tsv' USING PigStorage('\t') AS
           letter_bag:bag{dict:tuple(letter:chararray)},
           lista:map[]);
           
-v = FOREACH datos GENERATE FLATTEN(listas) as flatten_letter;
+v = FOREACH datos GENERATE FLATTEN(datos) as flatten_letter;
 
 grupos = GROUP v BY flatten_letter;
 
@@ -28,10 +28,4 @@ conteos = FOREACH grupos GENERATE group, COUNT(v);
 STORE conteos INTO 'output' USING PigStorage(',');
 
 
-
-filas = LOAD './data.tsv' USING PigStorage('\t') AS (Letra_may:chararray, letra_minus:bag{}, c3:map[]);
-columnas = FOREACH filas GENERATE FLATTEN (c3) AS letras;
-grouped = GROUP columnas BY letras;
-cuenta = FOREACH grouped GENERATE group, COUNT(columnas);
-STORE cuenta INTO 'output' USING PigStorage(',');
 
