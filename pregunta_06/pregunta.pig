@@ -19,7 +19,7 @@ datos = LOAD 'data.tsv' AS
           letter_bag:bag{},
           lista:map[]);
           
-v = FOREACH datos GENERATE FLATTEN(letter_bag) as flatten_letter;
+v = FOREACH datos GENERATE FLATTEN(listas) as flatten_letter;
 
 grupos = GROUP v BY flatten_letter;
 
