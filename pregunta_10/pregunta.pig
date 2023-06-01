@@ -29,4 +29,4 @@ datos_ordenados = ORDER datos_con_longitud BY longitud DESC, apellido;
 
 s = LIMIT datos_ordenados 5;
 
-STORE datos_ordenados INTO 'output' USING PigStorage(',');
+STORE s INTO 'output' USING PigStorage(',');
