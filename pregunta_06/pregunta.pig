@@ -19,7 +19,7 @@ datos = LOAD './data.tsv' USING PigStorage('\t') AS
           letter_bag:bag{dict:tuple(letter:chararray)},
           lista:map[]);
           
-v = FOREACH datos GENERATE FLATTEN(datos) as flatten_letter;
+v = FOREACH datos GENERATE FLATTEN(lista) as flatten_letter;
 
 grupos = GROUP v BY flatten_letter;
 
