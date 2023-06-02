@@ -26,4 +26,4 @@ base = FOREACH datos GENERATE (c5,c2) AS (color,nombre);
 
 seleccion = FILTER base BY nombre  MATCHES 'Z.*' AND (Color == 'blue');
 
-STORE seleccion INTO 'output' USING PigStorage(',');
+STORE seleccion INTO 'output' USING PigStorage(' ');
