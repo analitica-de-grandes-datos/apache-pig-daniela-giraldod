@@ -24,6 +24,6 @@ datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, c2: chararray, 
 
 colores = FOREACH datos GENERATE c5 AS color;
 
-seleccion = FILTER colores BY NOT($0 MATCHES 'b.*');
+seleccion = FILTER colores BY NOT(color MATCHES 'b.*');
 
 STORE seleccion INTO 'output' USING PigStorage(',');
