@@ -29,3 +29,6 @@ colores = FOREACH datos GENERATE c5 AS color;
 seleccion = FILTER colores BY $0 MATCHES 'b.*';
 
 STORE seleccion INTO 'output' USING PigStorage(',');
+
+-- Copiar los archivos del HDFS al sistema local.
+fs -get output/ .
