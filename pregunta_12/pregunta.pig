@@ -26,4 +26,13 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+--cargar datos
+datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, c2: chararray, c3: chararray );
 
+apellidos = FOREACH datos GENERATE c3 AS nombre;
+
+seleccion = FILTER apellidos BY (INDEXOF('defghijk', SUBSTRING(nombre, 0, 1)) >= 0);
+
+apellidos_filtrados = FOREACH seleccion GENERATE nombre;
+
+STORE cambios INTO 'output' USING PigStorage(',');
