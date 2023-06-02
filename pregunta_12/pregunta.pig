@@ -33,6 +33,6 @@ apellidos = FOREACH datos GENERATE c3 AS nombre;
 
 seleccion = FILTER apellidos BY (INDEXOF('defghijk', SUBSTRING(nombre, 0, 1)) >= 0);
 
-apellidos_filtrados = FOREACH seleccion GENERATE nombre;
+apellidos_sel = FOREACH seleccion GENERATE nombre;
 
-STORE cambios INTO 'output' USING PigStorage(',');
+STORE apellidos_sel INTO 'output' USING PigStorage(',');
