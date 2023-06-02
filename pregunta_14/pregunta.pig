@@ -18,12 +18,13 @@ evaluación, pig sera eejcutado ejecutado en modo local:
 
 $ pig -x local -f pregunta.pig
 
+*/
 
 --cargar datos
 datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, c2: chararray, c3: chararray ,c4: chararray,c5: chararray);
 
 colores = FOREACH datos GENERATE c5 AS color;
 
-seleccion = FILTER colores BY NOT(color MATCHES 'b.*');
+seleccion = FILTER colores BY NOT color MATCHES 'b.*';
 
 STORE seleccion INTO 'output' USING PigStorage(',');
