@@ -20,10 +20,10 @@ $ pig -x local -f pregunta.pig
 
 */
 --cargar datos
-datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararray, c3: chararray ,c4: chararray,color: chararray);
+datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararray, c3: chararray ,c4: chararray,color: chararray, value:int);
 
 base = FOREACH datos GENERATE color,nombre;
 
-seleccion = FILTER base BY (nombre  MATCHES 'Z.*') AND (color == 'blue');
+seleccion = FILTER base BY (nombre  MATCHES '.*Z.*') AND (color == 'blue');
 
 STORE seleccion INTO 'output' USING PigStorage(' ');
