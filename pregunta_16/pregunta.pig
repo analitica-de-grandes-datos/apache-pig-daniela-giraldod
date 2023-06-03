@@ -28,4 +28,4 @@ base = FOREACH datos GENERATE nombre,color;
 
 seleccion = FILTER base BY  nombre matches 'K.*' OR color matches '.*b.*';
 
-STORE seleccion INTO 'output' USING PigStorage(' ');
+STORE seleccion INTO 'output' USING PigStorage(',');
