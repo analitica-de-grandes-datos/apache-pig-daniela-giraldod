@@ -20,7 +20,7 @@ evaluación, pig sera eejcutado ejecutado en modo local:
 $ pig -x local -f pregunta.pig
 
 
-        >>> Escriba su respuesta a partir de este punto <<<
+        >>> Escriba su respuesta a partir de este punto <<<  */
 --cargar datos
 
 datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararray, c3: chararray ,c4: chararray,color: chararray, value:int);
