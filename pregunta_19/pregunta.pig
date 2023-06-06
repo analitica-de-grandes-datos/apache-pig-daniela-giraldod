@@ -28,6 +28,6 @@ datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararr
 
 base = FOREACH datos GENERATE nombre,color;
 
-values = FILTER base BY color MATCHES 'b.*';
+seleccion = FILTER base BY color MATCHES 'b.*';
 
 STORE seleccion INTO 'output' USING PigStorage(',');
