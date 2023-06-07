@@ -24,6 +24,6 @@ $ pig -x local -f pregunta.pig
 
 datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararray, apellido: chararray ,c4: chararray,color: chararray, value:int);
 
-base = FOREACH datos GENERATE (INDEXOF(apellido, 'a', 0)) AS posicion;
+base = FOREACH datos GENERATE (INDEXOF(nombre, 'a', 0)) AS posicion;
 
 STORE base INTO 'output' USING PigStorage(',');
