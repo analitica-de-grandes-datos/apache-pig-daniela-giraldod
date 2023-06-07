@@ -28,6 +28,4 @@ datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararr
 
 base = FOREACH datos GENERATE SUBSTRING(birthday, 0, 4) AS yyyy, SUBSTRING(birthday, 2, 4) AS yy ;
 
-s = LIMIT base 5;
-
-STORE s INTO 'output' USING PigStorage(',');
+STORE base INTO 'output' USING PigStorage(',');
