@@ -19,4 +19,10 @@ $ pig -x local -f pregunta.pig
         >>> Escriba su respuesta a partir de este punto <<<
 */
 
+--cargar datos
 
+datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararray, birthday: chararray ,c4: chararray,color: chararray, value:int);
+
+mes = FOREACH datos GENERATE SUBSTRING(birthday,5,7) as mes;
+
+STORE mes INTO 'output' USING PigStorage(',');
