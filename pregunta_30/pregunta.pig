@@ -34,3 +34,10 @@ $ pig -x local -f pregunta.pig
         >>> Escriba su respuesta a partir de este punto <<<
 */
 
+datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararray, apellido: chararray ,fecha: chararray,color: chararray, value:int);
+
+
+datos_con_fecha = FOREACH datos GENERATE ToDate(fecha, 'yyyy-MM-dd') AS fecha_obj;
+datos_con_dia = FOREACH datos_con_fecha GENERATE ToString(fecha_obj, 'yyyy-MM-dd') AS fecha, GetDay(fecha_obj) AS dia, GetMonth(fecha_obj) AS mes, ToString(fecha_obj, 'EEE') AS nombre_dia_corto, ToString(fecha_obj, 'EEEE') AS nombre_dia_largo;
+STORE datos_con_dia INTO 'output' USING PigStorage(',');
+
