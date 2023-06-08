@@ -19,4 +19,11 @@ evaluación, pig sera eejcutado ejecutado en modo local:
 $ pig -x local -f pregunta.pig
 
 */
+--cargar datos
+datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararray, c3: chararray ,c4: chararray,color: chararray, value:int);
 
+base = FOREACH datos GENERATE nombre,color;
+
+seleccion = FILTER base BY  nombre matches 'Z.*' AND color matches '.*b.*';
+
+STORE seleccion INTO 'output' USING PigStorage(' ');

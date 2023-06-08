@@ -20,4 +20,13 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+--cargar datos
+datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, c2: chararray, c3: chararray );
 
+datos_con_longitud = FOREACH datos GENERATE c3 AS apellido, SIZE(c3) AS longitud;
+
+datos_ordenados = ORDER datos_con_longitud BY longitud DESC, apellido;
+
+s = LIMIT datos_ordenados 5;
+
+STORE s INTO 'output' USING PigStorage(',');
