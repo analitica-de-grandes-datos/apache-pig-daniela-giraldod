@@ -29,4 +29,4 @@ grupos = GROUP valores BY ($0,$1);
 
 conteo = FOREACH grupos GENERATE $0, COUNT($1);
 
-STORE conteo INTO 'output' USING PigStorage (',')
+STORE conteo INTO 'output' 
