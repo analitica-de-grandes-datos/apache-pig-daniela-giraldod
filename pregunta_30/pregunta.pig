@@ -42,7 +42,6 @@ datos_con_fecha = FOREACH datos GENERATE ToDate(fecha, 'y-M-d') AS fecha_obj;
 datos_con_dia = FOREACH datos_con_fecha GENERATE ToString(fecha_obj, 'yyyy-MM-dd'),
 ToString($0, 'dd'),
 GetDay($0),
-GetMonth($0), 
  ( CASE  ToString($0, 'E')
         WHEN 'Mon' THEN 'lun'
         WHEN 'Tue' THEN 'mar'
