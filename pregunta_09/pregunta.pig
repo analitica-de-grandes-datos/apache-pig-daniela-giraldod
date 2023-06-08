@@ -31,8 +31,8 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
-datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, c2: chararray, c3: chararray );
+datos = LOAD 'data.csv' USING PigStorage(',') AS (c1: chararray, nombre: chararray, c3: chararray ,c4: chararray,color: chararray, value:int);
 
-datos_con_longitud = FOREACH datos GENERATE c2,c3;
+nombres = FOREACH datos GENERATE nombre,c3;
 
-STORE s INTO 'output' USING PigStorage('@');
+STORE nombres INTO 'output' USING PigStorage('@');
